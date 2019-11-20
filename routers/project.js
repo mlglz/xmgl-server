@@ -154,21 +154,23 @@ router.get('/list', (req, res, next) => {
 })
 
 /**
- * 搜索 根据name或unit
+ * 搜索 根据name或unit或exeLeader
  * GET
  * /project/search?
- * {pageNumber,pageSize,name或unit}
+ * {pageNumber,pageSize,name/unit/exeLeader}
  */
 router.get('/search', (req, res, next) => {
   //1 判断查询条件
-  const { pageNumber, pageSize, name, unit } = req.query
+  const { pageNumber, pageSize, name, unit , exeLeader } = req.query
   let condition = {}
   //1.1 name有值,按name查询
   if (name) {
     condition = { name: new RegExp('^.*' + name + '.*$') }
-  } else {
+  } else if(unit) {
     //1.2 否则按unit查询
     condition = { unit: new RegExp(`^.*${unit}.*$`) }
+  } else if(exeLeader){
+    condition = { exeLeader: exeLeader }
   }
   console.log(condition)
   //1 计算总数
