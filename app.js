@@ -1,4 +1,6 @@
-//app.js  服务器核心文件
+/**
+ * app.js  服务器核心文件
+ */
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -23,6 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/uploads',express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads',express.static('./uploads'))
 
 app.use('/', indexRouter);
 app.use('/cate', cateRouter);  //处理/cate/xxx
