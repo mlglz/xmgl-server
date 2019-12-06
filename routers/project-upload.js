@@ -1,6 +1,6 @@
 /**
  * project-upload.js
- * 处理project-文件上传/删除路由
+ * 处理路由:project-文件上传/删除
  */
 var express = require('express')
 var multer = require('multer')
@@ -50,6 +50,7 @@ module.exports = function fileUpload(router) {
       var file = req.file
       res.send({
         code: 0,
+        msg:'上传文件成功',
         name: file.filename,
         url: 'http://localhost:3001/uploads/' + file.filename
       })

@@ -48,6 +48,7 @@ const projectSchema = mongoose.Schema({
   exeCompany: { type: String, default: '' },      //项目合作方         从Companys表
   exeStatus: { type: String, default: '0' },      //项目实施状态   0 未实施  1 完成现场   2 完成整改  3 报告签章   4 其他
   exeRemark: { type: String,  },                  //实施备注 
+  files:[]                                        //附件列表  [file-xxxxx.pdf , file-xxxx.tif]
 })
 
 //新建projects表
